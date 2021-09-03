@@ -7,7 +7,7 @@ Basically, I recreated the <a href="https://en.wikipedia.org/wiki/Conway%27s_Gam
 - React prod build
 - 50x50 grid
 
-FireFox: ```~300ms``` each iteration
+FireFox: ```~300ms``` each iteration <br>
 Chrome: ```~160ms``` each iteration
 
 ## Gameplay
