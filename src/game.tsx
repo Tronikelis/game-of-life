@@ -4,7 +4,6 @@ import useInterval from "use-interval";
 
 import { useCellStore, Pos, rows, columns } from "./cell-store";
 
-
 // These rules, which compare the behavior of the automaton to real life, can be condensed into the following:
 
 // Any live cell with two or three live neighbours survives.
