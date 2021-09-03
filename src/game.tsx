@@ -1,5 +1,5 @@
 import { makeStyles, createStyles } from "@material-ui/styles"
-import { useEffect, useRef, useCallback, memo } from "react";
+import { useEffect, useRef, useCallback, memo, useState } from "react";
 import useInterval from "use-interval";
 
 import { useCellStore, Pos, rows, columns } from "./cell-store";
@@ -10,7 +10,6 @@ import { useCellStore, Pos, rows, columns } from "./cell-store";
 // Any dead cell with three live neighbours becomes a live cell.
 // All other live cells die in the next generation. Similarly, all other dead cells stay dead.
 
-
 const useStyles = makeStyles(() => createStyles({
     root: {
         width: "100%",
@@ -18,6 +17,7 @@ const useStyles = makeStyles(() => createStyles({
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        flexDirection: "column",
     },
     row: {
         width: "100%",
