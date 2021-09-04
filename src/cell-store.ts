@@ -4,11 +4,11 @@ import produce from "immer";
 export interface Pos {
     x: number;
     y: number;
-};
+}
 export interface Cell {
     pos: Pos;
     alive: boolean;
-};
+}
 
 interface CellStore {
     state: {
@@ -17,7 +17,7 @@ interface CellStore {
     actions: {
         setCells: (fn: (prev: Cell[]) => Cell[]) => void;
     };
-};
+}
 
 /**
  * size of the play area
@@ -25,21 +25,26 @@ interface CellStore {
 export const rows = 50;
 export const columns = 50;
 
-const startingCells = Array(rows * columns).fill(0).map((_, index) => ({
-    pos: {
-        x: index % rows,
-        y: Math.floor(index / rows),
-    },
-    alive: Math.round(Math.random() * 500) > 400,
-})) as Cell[];
+const startingCells = Array(rows * columns)
+    .fill(0)
+    .map((_, index) => ({
+        pos: {
+            x: index % rows,
+            y: Math.floor(index / rows),
+        },
+        alive: Math.round(Math.random() * 500) > 400,
+    })) as Cell[];
 
 export const useCellStore = create<CellStore>(set => ({
     state: {
-        cells: startingCells
+        cells: startingCells,
     },
     actions: {
-        setCells: (fn) => set(produce((value: CellStore) => {
-            value.state.cells = fn(value.state.cells);
-        }))
+        setCells: fn =>
+            set(
+                produce((value: CellStore) => {
+                    value.state.cells = fn(value.state.cells);
+                })
+            ),
     },
-}))
+}));
